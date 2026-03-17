@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博士有成 - 正姿智能管家型专业学习桌椅</title>
+  <meta name="description" content="博士有成BSUC，正姿智能管家型专业学习桌椅，智能实时管坐姿，孩子主动坐，家长少操心。">
+  <meta name="keywords" content="博士有成,BSUC,学习桌,学习椅,儿童学习桌椅,正姿桌椅,智能学习桌">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      color: #333;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+      transition: box-shadow 0.3s;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-area img {
+      height: 48px;
+      width: 48px;
+      border-radius: 10px;
+    }
+
+    .logo-text h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a6fc4;
+    }
+
+    .logo-text p {
+      font-size: 11px;
+      color: #888;
+      margin-top: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #1a6fc4; }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #333;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Hero */
+    .hero {
+      margin-top: 72px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e8f4fd 0%, #f0f7ff 50%, #fef9f0 100%);
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #1a6fc4, #2d8fe0);
+      color: #fff;
+      padding: 6px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .hero h2 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      color: #1a1a1a;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .hero h2 span { color: #1a6fc4; }
+
+    .hero p {
+      font-size: clamp(15px, 2vw, 18px);
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-images {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero-images img {
+      width: 32%;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      object-fit: cover;
+      aspect-ratio: 1;
+      transition: transform 0.4s;
+    }
+
+    .hero-images img:hover { transform: translateY(-6px); }
+
+    /* Features */
+    .features {
+      padding: 80px 24px;
+      background: #fff;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-header h3 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      font-size: 16px;
+      color: #888;
+    }
+
+    .features-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 36px 24px;
+      border-radius: 16px;
+      background: #f8fafd;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(26,111,196,0.1);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 26px;
+    }
+
+    .feature-card:nth-child(1) .feature-icon { background: #e8f4fd; }
+    .feature-card:nth-child(2) .feature-icon { background: #fef3e2; }
+    .feature-card:nth-child(3) .feature-icon { background: #e8fde8; }
+    .feature-card:nth-child(4) .feature-icon { background: #f3e8fd; }
+
+    .feature-card h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* Products */
+    .products {
+      padding: 80px 24px;
+      background: #f7f9fc;
+    }
+
+    .product-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+    }
+
+    .product-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-card .product-info {
+      padding: 18px 20px 22px;
+    }
+
+    .product-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+
+    .product-card p {
+      font-size: 13px;
+      color: #999;
+    }
+
+    /* Highlight section */
+    .highlight {
+      padding: 80px 24px;
+      background: linear-gradient(135deg, #1a6fc4, #2d8fe0);
+      text-align: center;
+      color: #fff;
+    }
+
+    .highlight h3 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .highlight p {
+      font-size: 17px;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item h4 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+    }
+
+    .stat-item p {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+
+    /* WeChat Section */
+    .wechat-section {
+      padding: 80px 24px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .wechat-section img {
+      width: 200px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    .wechat-section h4 {
+      font-size: 18px;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .wechat-section p {
+      font-size: 14px;
+      color: #888;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1a1a2e;
+      color: rgba(255,255,255,0.7);
+      padding: 48px 24px 32px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .footer p {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .footer-bottom {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 12px;
+      opacity: 0.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+
+      .hero { padding: 60px 20px 40px; }
+
+      .hero-images { gap: 10px; }
+      .hero-images img { border-radius: 10px; }
+
+      .features, .products, .highlight, .wechat-section {
+        padding: 56px 20px;
+      }
+
+      .stats-row { gap: 32px; }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .product-card .product-info { padding: 12px 14px 16px; }
+      .product-card h4 { font-size: 14px; }
+      .product-card p { font-size: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+    }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge, .hero h2, .hero p, .hero-images {
+      animation: fadeUp 0.7s ease-out both;
+    }
+    .hero h2 { animation-delay: 0.1s; }
+    .hero p { animation-delay: 0.2s; }
+    .hero-images { animation-delay: 0.3s; }
+
+    /* 智能计算工具 */
+    .smart-tools {
+      padding: 80px 24px;
+      background: linear-gradient(180deg, #f8f9fa 0%, #fff 100%);
+    }
+
+    .smart-tools .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .smart-tools .section-header h3 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .smart-tools .section-header p {
+      font-size: 15px;
+      color: #888;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .tool-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(26,111,196,0.15);
+    }
+
+    .tool-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tool-card h4 span {
+      font-size: 20px;
+    }
+
+    .tool-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tool-inputs input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      font-size: 15px;
+      transition: all 0.2s;
+    }
+
+    .tool-inputs input:focus {
+      outline: none;
+      border-color: #1a6fc4;
+      box-shadow: 0 0 0 4px rgba(26,111,196,0.1);
+    }
+
+    .tool-inputs input::placeholder {
+      color: #aaa;
+    }
+
+    .tool-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #1a6fc4 0%, #2d8cf0 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .tool-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(26,111,196,0.3);
+    }
+
+    .tool-result {
+      margin-top: 20px;
+      padding: 16px;
+      background: linear-gradient(135deg, #e8f4ff 0%, #f0f9ff 100%);
+      border-radius: 12px;
+      font-size: 14px;
+      color: #1a6fc4;
+      font-weight: 500;
+      display: none;
+    }
+
+    .tool-result.show {
+      display: block;
+      animation: fadeUp 0.3s ease;
+    }
+
+    /* 智能客服聊天 */
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 320px;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .chat-msg {
+      margin-bottom: 12px;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      max-width: 85%;
+    }
+
+    .chat-msg.bot {
+      background: #e8f4ff;
+      color: #333;
+      align-self: flex-start;
+    }
+
+    .chat-msg.user {
+      background: linear-gradient(135deg, #1a6fc4 0%, #2d8cf0 100%);
+      color: #fff;
+      margin-left: auto;
+    }
+
+    .chat-input-area {
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    .chat-input-area input:focus {
+      outline: none;
+      border-color: #1a6fc4;
+    }
+
+    .chat-input-area button {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #1a6fc4 0%, #2d8cf0 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 16px;
+      }
+      
+      .smart-tools {
+        padding: 56px 0;
+      }
+      
+      .tool-card {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <img src="logo.png" alt="博士有成">
+        <div class="logo-text">
+          <h1>博士有成</h1>
+          <p>BSUC | 正姿智能管家型专业学习桌椅</p>
+        </div>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">首页</a></li>
+          <li><a href="#features">产品特色</a></li>
+          <li><a href="#tools">智能工具</a></li>
+          <li><a href="#products">产品展示</a></li>
+          <li><a href="#contact">联系我们</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-menu-btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-badge">20年专注 · 正姿护脊</div>
+    <h2>智能管 自主坐<br><span>家长少操心</span></h2>
+    <p>博士有成专注儿童学习桌椅20年，以智能科技守护孩子正确坐姿，让学习更专注、成长更健康。</p>
+    <div class="hero-images">
+      <img src="product1.jpg" alt="博士有成智能学习桌椅" loading="lazy">
+      <img src="product2.jpg" alt="博士有成正姿学习桌" loading="lazy">
+      <img src="product7.jpg" alt="博士有成电动升降学习桌" loading="lazy">
+    </div>
+  </section>
+
+  <!-- 智能计算工具 -->
+  <section class="smart-tools" id="tools">
+    <div class="section-header">
+      <h3>智能选配工具</h3>
+      <p>输入孩子信息或预算，智能推荐最适合的学习桌椅</p>
+    </div>
+    <div class="tools-grid">
+      <!-- 身高年龄计算 -->
+      <div class="tool-card">
+        <h4><span>📏</span> 身高年龄匹配</h4>
+        <div class="tool-inputs">
+          <input type="number" id="childAge" placeholder="孩子年龄（岁）">
+          <input type="number" id="childHeight" placeholder="孩子身高（cm）">
+          <button class="tool-btn" onclick="calHeight()">立即匹配</button>
+        </div>
+        <div class="tool-result" id="heightResult"></div>
+      </div>
+
+      <!-- 预算推荐 -->
+      <div class="tool-card">
+        <h4><span>💰</span> 预算精准推荐</h4>
+        <div class="tool-inputs">
+          <input type="number" id="budget" placeholder="您的预算（元）">
+          <button class="tool-btn" onclick="calBudget()">立即推荐</button>
+        </div>
+        <div class="tool-result" id="budgetResult"></div>
+      </div>
+
+      <!-- 智能客服 -->
+      <div class="tool-card">
+        <h4><span>💬</span> 智能客服咨询</h4>
+        <div class="chat-container">
+          <div class="chat-messages" id="chatMessages">
+            <div class="chat-msg bot">您好！我是博士有成智能顾问，有什么可以帮您？</div>
+          </div>
+          <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="请输入您的问题..." onkeypress="if(event.key==='Enter')sendChat()">
+            <button onclick="sendChat()">发送</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="section-header">
+      <h3>为什么选择博士有成</h3>
+      <p>智能科技 · 守护成长每一步</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#128218;</div>
+        <h4>智能坐姿管理</h4>
+        <p>实时监测坐姿状态，错姿识别自动提醒，帮助孩子养成良好坐姿习惯</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128161;</div>
+        <h4>正姿护脊设计</h4>
+        <p>科学人体工学设计，专业护脊椅背，呵护孩子脊柱健康发育</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128200;</div>
+        <h4>远程查岗报告</h4>
+        <p>家长端远程查看学习状态，智能生成坐姿报告，家长少操心</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#127793;</div>
+        <h4>伴随成长升降</h4>
+        <p>桌椅高度自由调节，适配不同年龄段身高，一套桌椅陪伴整个学习阶段</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="products" id="products">
+    <div class="section-header">
+      <h3>产品展示</h3>
+      <p>多款智能学习桌椅 · 满足不同家庭需求</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="product1.jpg" alt="智能正姿学习桌椅套装" loading="lazy">
+        <div class="product-info">
+          <h4>智能正姿学习桌椅套装</h4>
+          <p>智能实时管坐姿 · 孩子主动坐</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product2.jpg" alt="胡桃木智能管家学习桌椅" loading="lazy">
+        <div class="product-info">
+          <h4>胡桃木智能管家学习桌椅</h4>
+          <p>错姿识别 · 智能抓拍 · 远程查岗</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product3.jpg" alt="耶鲁12002 PRO学习桌" loading="lazy">
+        <div class="product-info">
+          <h4>耶鲁 12002 PRO 学习桌</h4>
+          <p>简约设计 · 大桌面 · 专业护眼灯</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product4.jpg" alt="实木学习桌" loading="lazy">
+        <div class="product-info">
+          <h4>实木系列学习桌</h4>
+          <p>天然实木 · 环保健康 · 经久耐用</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product5.jpg" alt="原木学习桌椅套装" loading="lazy">
+        <div class="product-info">
+          <h4>原木学习桌椅套装</h4>
+          <p>北欧原木风 · 温馨学习空间</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product6.jpg" alt="常青藤魔法师转角升降学习桌" loading="lazy">
+        <div class="product-info">
+          <h4>常青藤·魔法师转角升降学习桌</h4>
+          <p>转角方寸间 · 成长大不同</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product7.jpg" alt="电动升降智能学习桌椅" loading="lazy">
+        <div class="product-info">
+          <h4>电动升降智能学习桌椅</h4>
+          <p>遥控升降 · 记忆高度 · 太空主题</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product13.jpg" alt="未来舱智能学习桌" loading="lazy">
+        <div class="product-info">
+          <h4>未来舱智能学习桌</h4>
+          <p>科技未来感 · 沉浸式学习体验</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product8.jpg" alt="天蓝色学习桌椅" loading="lazy">
+        <div class="product-info">
+          <h4>天蓝色学习桌椅套装</h4>
+          <p>清新蓝色 · 20年陪伴成长</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product9.jpg" alt="薄荷绿学习桌椅" loading="lazy">
+        <div class="product-info">
+          <h4>薄荷绿学习桌椅套装</h4>
+          <p>大容量收纳 · 翻转桌面设计</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product11.jpg" alt="粉色公主学习桌椅" loading="lazy">
+        <div class="product-info">
+          <h4>粉色公主学习桌椅</h4>
+          <p>梦幻粉色 · 女孩专属学习空间</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product15.jpg" alt="简约白色学习桌椅" loading="lazy">
+        <div class="product-info">
+          <h4>简约白色学习桌椅</h4>
+          <p>极简设计 · 百搭家居风格</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlight -->
+  <section class="highlight">
+    <h3>20年专注 只为孩子健康成长</h3>
+    <p>博士有成始终专注于儿童学习桌椅领域，以专业正姿设计和智能科技，守护每一位孩子的健康坐姿与专注学习。</p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <h4>20+</h4>
+        <p>年品牌沉淀</p>
+      </div>
+      <div class="stat-item">
+        <h4>100万+</h4>
+        <p>家庭信赖之选</p>
+      </div>
+      <div class="stat-item">
+        <h4>15+</h4>
+        <p>款智能产品</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WeChat -->
+  <section class="wechat-section" id="contact">
+    <div class="section-header">
+      <h3>关注我们</h3>
+      <p>扫码关注博士有成微信公众号，了解更多产品信息</p>
+    </div>
+    <img src="miniprogram.jpg" alt="博士有成微信公众号二维码" loading="lazy">
+    <h4>扫码关注博士有成微信公众号</h4>
+    <p>获取最新产品资讯与优惠活动</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-brand">博士有成 BSUC</div>
+    <p>正姿智能管家型专业学习桌椅</p>
+    <p>智能管 · 自主坐 · 家长少操心</p>
+    <div class="footer-bottom">
+      <p>&copy; 2024 博士有成 BSUC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // 身高年龄计算桌椅高度
+    function calHeight() {
+      const age = parseInt(document.getElementById('childAge').value);
+      const height = parseInt(document.getElementById('childHeight').value);
+      const result = document.getElementById('heightResult');
+      
+      if (!age && !height) {
+        result.innerHTML = '请输入年龄或身高';
+        result.classList.add('show');
+        return;
+      }
+      
+      let deskHeight, chairHeight, tip;
+      
+      if (height) {
+        deskHeight = Math.round(height * 0.43 + 5);
+        chairHeight = Math.round(height * 0.25);
+        tip = `根据身高 ${height}cm`;
+      } else {
+        // 根据年龄估算
+        if (age <= 4) { deskHeight = 49; chairHeight = 26; }
+        else if (age <= 6) { deskHeight = 52; chairHeight = 28; }
+        else if (age <= 9) { deskHeight = 55; chairHeight = 30; }
+        else if (age <= 12) { deskHeight = 60; chairHeight = 34; }
+        else { deskHeight = 68; chairHeight = 38; }
+        tip = `根据年龄 ${age} 岁`;
+      }
+      
+      result.innerHTML = `${tip}<br>推荐桌高 <b>${deskHeight}cm</b>，椅高 <b>${chairHeight}cm</b>`;
+      result.classList.add('show');
+    }
+
+    // 预算推荐产品
+    function calBudget() {
+      const budget = parseInt(document.getElementById('budget').value);
+      const result = document.getElementById('budgetResult');
+      
+      if (!budget) {
+        result.innerHTML = '请输入您的预算';
+        result.classList.add('show');
+        return;
+      }
+      
+      let recommend;
+      if (budget < 3000) {
+        recommend = '推荐：哈佛系列（基础实用款），性价比高，满足日常学习需求';
+      } else if (budget < 4500) {
+        recommend = '推荐：剑桥系列/管小宝120B，颜值与功能兼备';
+      } else if (budget < 6000) {
+        recommend = '推荐：博士系列电动款/耶鲁12002 PRO，升级体验';
+      } else if (budget < 8000) {
+        recommend = '推荐：常青藤系列（实木高端），环保健康';
+      } else {
+        recommend = '推荐：太空一号AI智能款，顶配智能体验';
+      }
+      
+      result.innerHTML = `预算 <b>¥${budget}</b><br>${recommend}`;
+      result.classList.add('show');
+    }
+
+    // 智能客服聊天
+    function sendChat() {
+      const input = document.getElementById('chatInput');
+      const msg = input.value.trim();
+      const messages = document.getElementById('chatMessages');
+      
+      if (!msg) return;
+      
+      // 用户消息
+      messages.innerHTML += `<div class="chat-msg user">${msg}</div>`;
+      input.value = '';
+      messages.scrollTop = messages.scrollHeight;
+      
+      // 智能回复
+      let reply = '';
+      if (msg.includes('价格') || msg.includes('多少钱')) {
+        reply = '我们的产品价格从 ¥2699 到 ¥9299 不等，具体要看系列和配置。您可以输入预算，我来帮您推荐！';
+      } else if (msg.includes('管小宝') || msg.includes('AI')) {
+        reply = '管小宝120B是AI智能入门款（¥2999），核心功能：AI智能正姿监测+手摇升降，适合3-12岁儿童~';
+      } else if (msg.includes('实木') || msg.includes('常青藤')) {
+        reply = '常青藤系列均采用进口实木（橡胶木/榉木），环保等级超E0级，无异味更安全！';
+      } else if (msg.includes('电动')) {
+        reply = '博士系列电动款支持一键升降+静音操控，适合追求便捷操作的家庭~';
+      } else if (msg.includes('安装') || msg.includes('售后')) {
+        reply = '博士有成提供全国免费上门安装服务，3年质保+终身维护，拨打400-188-6788咨询~';
+      } else if (msg.includes('门店') || msg.includes('哪里有')) {
+        reply = '博士有成在全国300+城市有1000+门店，可到官网 store.bs-yc.com 查询~';
+      } else if (msg.includes('国补') || msg.includes('补贴')) {
+        reply = '国补政策可享100-500元补贴，线下门店直接抵扣，详询400-188-6788~';
+      } else {
+        reply = '感谢您的咨询！如需了解详情，可：①输入预算帮您推荐产品；②拨打400-188-6788；③点击上方产品查看详情~';
+      }
+      
+      setTimeout(() => {
+        messages.innerHTML += `<div class="chat-msg bot">${reply}</div>`;
+        messages.scrollTop = messages.scrollHeight;
+      }, 600);
+    }
+  </script>
+
+</body>
+</html>
